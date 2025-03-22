@@ -1,5 +1,6 @@
 com\example\FaceService.class
 com\example\FaceController.class
+com\example\HelloController.class
 com\example\Face.class
 com\example\FaceRepository.class
 com\example\FaceApplication.class
