@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recognify</title>
+    <style>
+        body {
+            background-color: #91d9e9;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            height: 100vh; /* Make body take full height */
+            justify-content: space-between; /* Space out content */
+        }
+
+        .container {
+            padding: 10px;
+            position: relative; /* Make the container relative for absolute positioning of the icon */
+        }
+
+        .home-icon {
+            position: absolute; /* Position the icon absolutely */
+            top: 10px; /* Distance from the top */
+            left: 10px; /* Distance from the left */
+            width: 40px; /* Set a width for the icon */
+            height: auto; /* Maintain aspect ratio */
+            cursor: pointer; /* Change cursor to pointer on hover */
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 50px;
+        }
+
+        .button-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Space out buttons and image */
+            margin-bottom: 10px; /* Reduced space above the image */
+        }
+
+        .image-container {
+            flex-grow: 1; /* Allow the image container to grow and take available space */
+            display: flex;
+            justify-content: center; /* Center the image */
+            margin-top: -10px; /* Negative margin to pull the image up */
+        }
+
+        .button {
+            padding: 25px 50px; /* Increased padding for larger buttons */
+            margin-right: 10px; /* Reduced space between buttons */
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+            background-color: white;
+            color: #91d9e9;
+            font-size: 18px; /* Increased font size for better visibility */
+        }
+
+        .center-button-container {
+            display: flex;
+            justify-content: center; /* Center the button horizontally */
+            margin-bottom: 20px; /* Space from the bottom */
+        }
+
+        .image-container img {
+            max-width: 50%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="images/home.png" alt="Home" class="home-icon"> 
+        <h1>Recognify</h1>
+        <div class="button-container">
+            <button class="button add-student">Add new Student</button>
+            <div class="image-container">
+                <img src="images/logobg.png" alt="Recognify Logo">
+
+            </div>
+            <button class="button attendance-log">Attendance Log</button>
+        </div>
+    </div>
+    <div class="center-button-container">
+        <button class="button scan-face">Scan Face</button>
+    </div>
+</body>
+</html>
