@@ -1,8 +1,8 @@
-com\example\FaceService.class
-com\example\FaceController.class
-com\example\HelloController.class
-com\example\Face.class
-com\example\RekognitionController.class
-com\example\RekognitionService.class
-com\example\FaceRepository.class
-com\example\FaceApplication.class
+com\example\facerecognitionapp\util\ImageUtils.class
+com\example\facerecognitionapp\dto\FaceRecognitionRequest.class
+com\example\facerecognitionapp\model\FaceMatchResult.class
+com\example\facerecognitionapp\service\FaceRecognitionService.class
+com\example\facerecognitionapp\config\AwsConfig.class
+com\example\facerecognitionapp\FaceRecognitionAppApplication.class
+com\example\facerecognitionapp\service\S3Service.class
+com\example\facerecognitionapp\controller\FaceRecognitionController.class
