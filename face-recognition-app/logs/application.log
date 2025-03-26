@@ -107,3 +107,19 @@ Caused by: java.lang.Error: Unresolved compilation problem:
 2025-03-26T22:28:16.648+05:30  INFO 9792 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
 2025-03-26T22:28:16.655+05:30  INFO 9792 --- [restartedMain] c.e.f.FaceRecognitionAppApplication      : Started FaceRecognitionAppApplication in 0.593 seconds (process running for 94.317)
 2025-03-26T22:28:16.657+05:30  INFO 9792 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-03-26T22:28:34.844+05:30  INFO 5204 --- [restartedMain] c.e.f.FaceRecognitionAppApplication      : Starting FaceRecognitionAppApplication using Java 21.0.5 with PID 5204 (C:\Users\Hemant\Downloads\PYTHON\Recognify\face-recognition-app\target\classes started by Hemant in C:\Users\Hemant\Downloads\PYTHON\Recognify\face-recognition-app)
+2025-03-26T22:28:34.846+05:30  INFO 5204 --- [restartedMain] c.e.f.FaceRecognitionAppApplication      : No active profile set, falling back to 1 default profile: "default"
+2025-03-26T22:28:34.905+05:30  INFO 5204 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-03-26T22:28:34.905+05:30  INFO 5204 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-03-26T22:28:35.994+05:30  INFO 5204 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-03-26T22:28:36.007+05:30  INFO 5204 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-26T22:28:36.007+05:30  INFO 5204 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2025-03-26T22:28:36.061+05:30  INFO 5204 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-26T22:28:36.062+05:30  INFO 5204 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1156 ms
+2025-03-26T22:28:36.784+05:30  INFO 5204 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2025-03-26T22:28:37.080+05:30  INFO 5204 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-03-26T22:28:37.115+05:30  INFO 5204 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2025-03-26T22:28:37.122+05:30  INFO 5204 --- [restartedMain] c.e.f.FaceRecognitionAppApplication      : Started FaceRecognitionAppApplication in 2.748 seconds (process running for 3.176)
+2025-03-26T22:28:45.953+05:30  INFO 5204 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-03-26T22:28:45.954+05:30  INFO 5204 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-03-26T22:28:45.955+05:30  INFO 5204 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
