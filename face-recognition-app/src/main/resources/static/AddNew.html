@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recognify - Add New Student</title>
+    <style>
+        :root {
+            --primary-color: #91d9e9;
+            --secondary-color: white;
+            --accent-color: #4a90e2;
+            --text-color: #333;
+            --input-bg: rgba(204, 229, 238, 0.7);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+            max-width: 900px;
+            background-color: var(--secondary-color);
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            overflow: hidden;
+            min-height: 500px;
+        }
+
+        .form-section {
+            flex: 1;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--accent-color);
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--primary-color);
+            border-radius: 10px;
+            background-color: var(--input-bg);
+            transition: all 0.3s ease;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+        }
+
+        .camera-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--primary-color);
+            position: relative;
+            padding: 20px;
+        }
+
+        .face-box {
+            width: 300px;
+            height: 300px;
+            border: 5px solid var(--secondary-color);
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+
+        .face-box::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 80%;
+            border: 2px dashed rgba(255,255,255,0.5);
+            border-radius: 15px;
+            z-index: 10;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .instruction {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(255,255,255,0.8);
+            padding: 10px 15px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--accent-color);
+            color: var(--secondary-color);
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #3a7bd5;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .form-section, .camera-section {
+                padding: 20px;
+            }
+
+            .face-box {
+                width: 250px;
+                height: 250px;
+            }
+        }
+
+        #status {
+            margin-top: 15px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .status-success {
+            color: green;
+        }
+
+        .status-error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-section">
+            <h1>Add New Student</h1>
+            <form id="studentForm">
+                <div class="input-group">
+                    <label for="username">Full Name</label>
+                    <input type="text" id="username" placeholder="Enter Full Name" required>
+                </div>
+                <div class="input-group">
+                    <label for="enrollment">Enrollment Number</label>
+                    <input type="text" id="enrollment" placeholder="Enter Enrollment Number" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="Enter Email Address" required>
+                </div>
+                <button type="submit" class="submit-btn">Add Student</button>
+            </form>
+            <div id="status"></div>
+        </div>
+        <div class="camera-section">
+            <div class="face-box">
+                <video id="video" autoplay playsinline></video>
+            </div>
+            <div class="instruction">Position your face in the center</div>
+        </div>
+    </div>
+
+    <script>
+        const video = document.getElementById('video');
+        const form = document.getElementById('studentForm');
+        const statusElement = document.getElementById('status');
+
+        // Status update function
+        function updateStatus(message, type = '') {
+            statusElement.textContent = message;
+            statusElement.className = `status-${type}`;
+        }
+
+        // Webcam initialization
+        function initializeWebcam() {
+            updateStatus('Accessing Camera...', 'info');
+
+            navigator.mediaDevices.getUserMedia({ 
+                video: { 
+                    width: { ideal: 1280 },
+                    height: { ideal: 720 }
+                } 
+            })
+            .then(stream => {
+                video.srcObject = stream;
+                video.onloadedmetadata = () => {
+                    video.play();
+                    updateStatus('Camera Ready', 'success');
+                };
+            })
+            .catch(err => {
+                console.error("Webcam access error:", err);
+                updateStatus('Camera Access Denied', 'error');
+            });
+        }
+
+        // Form submission handler
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Capture form data
+            const name = document.getElementById('username').value;
+            const enrollment = document.getElementById('enrollment').value;
+            const email = document.getElementById('email').value;
+
+            // Capture video frame
+            const canvas = document.createElement('canvas');
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            const context = canvas.getContext('2d');
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+            
+            // Convert to base64
+            const imageData = canvas.toDataURL('image/png');
+
+            // Prepare student data
+            const studentData = {
+                name,
+                enrollment,
+                email,
+                faceImage: imageData
+            };
+
+            // Placeholder for sending data (you'd replace with actual backend call)
+            console.log('Student Data:', studentData);
+            updateStatus('Student Added Successfully', 'success');
+
+            // Optional: Reset form
+            form.reset();
+        });
+
+        // Initialize webcam on page load
+        initializeWebcam();
+    </script>
+</body>
+</html>

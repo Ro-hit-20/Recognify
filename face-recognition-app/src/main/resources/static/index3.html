@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recognify</title>
+    <style>
+        :root {
+            --primary-color: #91d9e9;
+            --secondary-color: white;
+            --text-color: #333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--primary-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            color: var(--text-color);
+        }
+
+        .container {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .home-icon {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .home-icon:hover {
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
+        .button {
+            flex: 1;
+            padding: 15px 30px;
+            margin: 0 10px;
+            border: none;
+            border-radius: 25px;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 8px rgba(0,0,0,0.2);
+        }
+
+        .image-container {
+            flex: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image-container img {
+            max-width: 60%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .center-button-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .scan-face {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .button-container {
+                flex-direction: column;
+            }
+
+            .button {
+                margin: 10px 0;
+                width: 100%;
+            }
+
+            .home-icon {
+                position: static;
+                margin-bottom: 20px;
+                transform: none;
+            }
+
+            .header {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="/images/icon.jpg" alt="Home Icon" class="home-icon">
+            <h1>Recognify</h1>
+        </div>
+        
+        <div class="button-container">
+            <button class="button add-student" onclick="window.location.href='addnew.html'">
+                Add New Student
+            </button>
+            
+            <div class="image-container">
+                <img src="/images/face-recognition-image.jpg" alt="Face Recognition">
+            </div>
+            
+            <button class="button attendance-log" onclick="window.location.href='attendance.html'">
+                Attendance Log
+            </button>
+        </div>
+        
+        <div class="center-button-container">
+            <a href="ScanFace.html" class="button scan-face">Scan Face</a>
+        </div>
+    </div>
+
+    <script>
+        // Handle home icon click
+        document.querySelector('.home-icon').addEventListener('click', () => {
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>
